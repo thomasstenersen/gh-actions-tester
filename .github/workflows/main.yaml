@@ -1,0 +1,34 @@
+name: Build and test
+on:
+  pull_request:
+  push:
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Install meson build
+        run: |
+          pipx install meson
+          pipx install ninja
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          meson setup build
+          ninja -C build
+
+      - name: Run tests
+        run: ninja -C build test
+
+      - name: Test Report
+        uses: phoenix-actions/test-reporting@v8
+        id: test-report
+        if: success() || failure()
+        with:
+          name: JEST Tests
+          path: build/meson-logs/*.xml
+          reporter: jest-junit
