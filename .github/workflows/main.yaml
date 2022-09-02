@@ -23,7 +23,7 @@ jobs:
 
       - name: Run tests
         run: |
-          ninja -C build test
+          meson test -C build --test-args=--ascii
 
       - name: Convert test results
         if: success() || failure()
