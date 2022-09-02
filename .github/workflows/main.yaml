@@ -25,10 +25,10 @@ jobs:
         run: |
           meson test -C build
 
-      - name: Convert test results
-        if: success() || failure()
-        run : |
-          ninja -C build test/test-results.xml
+      # - name: Convert test results
+      #   if: success() || failure()
+      #   run : |
+      #     ninja -C build test/test-results.xml
 
       - name: Test Report
         uses: phoenix-actions/test-reporting@v8

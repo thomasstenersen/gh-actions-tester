@@ -6,11 +6,11 @@ example_test = executable('example_test', sources: ['src/example_test.c'],
 test('Example test', example_test,
      args: ['--color=never', '--xml=example_test.xml'])
 
-python = import('python').find_installation('python3')
-custom_target(output: 'test-results.xml',
-              command: [python,
-                        meson.current_source_dir() + '/scripts/meson_xml_to_junit.py',
-                        meson.build_root() + '/meson-logs/testlog.junit.xml',
-                        meson.build_root() + '/test-results.xml'],
-              build_by_default: false,
-             )
+# python = import('python').find_installation('python3')
+# custom_target(output: 'test-results.xml',
+#               command: [python,
+#                         meson.current_source_dir() + '/scripts/meson_xml_to_junit.py',
+#                         meson.build_root() + '/meson-logs/testlog.junit.xml',
+#                         meson.build_root() + '/test-results.xml'],
+#               build_by_default: false,
+#              )
