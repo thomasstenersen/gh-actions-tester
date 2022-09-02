@@ -24,6 +24,10 @@ jobs:
       - name: Run tests
         run: |
           ninja -C build test
+
+      - name: Convert test results
+        if: success() || failure()
+        run : |
           ninja -C build test/test-results.xml
 
       - name: Test Report
