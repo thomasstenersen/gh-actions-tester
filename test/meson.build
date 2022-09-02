@@ -11,5 +11,5 @@ custom_target(output: 'test-results.xml',
                         meson.current_source_dir() + '/scripts/meson_xml_to_junit.py',
                         meson.build_root() + '/meson-logs/testlog.junit.xml',
                         meson.build_root() + '/test-results.xml'],
-              build_by_default: true,
-              depend_files: meson.build_root() + '/meson-logs/testlog.junit.xml')
+              build_by_default: false,
+             )

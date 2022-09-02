@@ -22,7 +22,9 @@ jobs:
           ninja -C build
 
       - name: Run tests
-        run: ninja -C build test
+        run: |
+          ninja -C build test
+          ninja -C build test/test-results.xml
 
       - name: Test Report
         uses: phoenix-actions/test-reporting@v8
