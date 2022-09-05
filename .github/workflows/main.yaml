@@ -30,33 +30,57 @@ jobs:
       #   run : |
       #     ninja -C build test/test-results.xml
 
-      - name: Test report (phoenix-actions)
-        uses: phoenix-actions/test-reporting@v8
-        if: success() || failure()
-        with:
-          name: JEST
-          path: build/*.xml
-          reporter: jest-junit
+      # - name: Test report (phoenix-actions)
+      #   uses: phoenix-actions/test-reporting@v8
+      #   if: success() || failure()
+      #   with:
+      #     name: JEST
+      #     path: build/*.xml
+      #     reporter: jest-junit
 
-      - name: Test report (phoenix-actions)
-        uses: phoenix-actions/test-reporting@v8
-        if: success() || failure()
-        with:
-          name: Java JUnit
-          path: build/*.xml
-          reporter: java-junit
+      # - name: Test report (phoenix-actions)
+      #   uses: phoenix-actions/test-reporting@v8
+      #   if: success() || failure()
+      #   with:
+      #     name: Java JUnit
+      #     path: build/*.xml
+      #     reporter: java-junit
 
       - name: Test report (EnricoMi)
-        uses: EnricoMi/publish-unit-test-result-action@v1
+        uses: EnricoMi/publish-unit-test-result-action@v2
         if: success() || failure()
         with:
-          check_name: Test report (publish-unit-test-result-action)
-          files: "build/*.xml"
+          check_name: Test report (enricomi:junit)
+          junit_files: "build/*.xml"
           comment_mode: off
 
-      - name: Test report (mikepenz)
-        uses: mikepenz/action-junit-report@v3
+      - name: Test report (EnricoMi)
+        uses: EnricoMi/publish-unit-test-result-action@v2
         if: success() || failure()
         with:
-          check_name: action-junit-report
-          report_paths: 'build/*.xml'
+          check_name: Test report (enricomi:xunit)
+          xunit_files: "build/*.xml"
+          comment_mode: off
+
+      - name: Test report (EnricoMi)
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: success() || failure()
+        with:
+          check_name: Test report (enricomi:nunit)
+          nunit_files: "build/*.xml"
+          comment_mode: off
+
+      - name: Test report (EnricoMi)
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: success() || failure()
+        with:
+          check_name: Test report (enricomi:trx)
+          trx_files: "build/*.xml"
+          comment_mode: off
+
+      # - name: Test report (mikepenz)
+      #   uses: mikepenz/action-junit-report@v3
+      #   if: success() || failure()
+      #   with:
+      #     check_name: action-junit-report
+      #     report_paths: 'build/*.xml'
