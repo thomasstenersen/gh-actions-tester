@@ -52,31 +52,31 @@ jobs:
         with:
           check_name: Test report (enricomi:junit)
           junit_files: "build/*.xml"
-          comment_mode: off
+          comment_mode: always
 
-      - name: Test report (EnricoMi)
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: success() || failure()
-        with:
-          check_name: Test report (enricomi:xunit)
-          xunit_files: "build/*.xml"
-          comment_mode: off
+      # - name: Test report (EnricoMi)
+      #   uses: EnricoMi/publish-unit-test-result-action@v2
+      #   if: success() || failure()
+      #   with:
+      #     check_name: Test report (enricomi:xunit)
+      #     xunit_files: "build/*.xml"
+      #     comment_mode: off
 
-      - name: Test report (EnricoMi)
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: success() || failure()
-        with:
-          check_name: Test report (enricomi:nunit)
-          nunit_files: "build/*.xml"
-          comment_mode: off
+      # - name: Test report (EnricoMi)
+      #   uses: EnricoMi/publish-unit-test-result-action@v2
+      #   if: success() || failure()
+      #   with:
+      #     check_name: Test report (enricomi:nunit)
+      #     nunit_files: "build/*.xml"
+      #     comment_mode: off
 
-      - name: Test report (EnricoMi)
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: success() || failure()
-        with:
-          check_name: Test report (enricomi:trx)
-          trx_files: "build/*.xml"
-          comment_mode: off
+      # - name: Test report (EnricoMi)
+      #   uses: EnricoMi/publish-unit-test-result-action@v2
+      #   if: success() || failure()
+      #   with:
+      #     check_name: Test report (enricomi:trx)
+      #     trx_files: "build/*.xml"
+      #     comment_mode: off
 
       # - name: Test report (mikepenz)
       #   uses: mikepenz/action-junit-report@v3
