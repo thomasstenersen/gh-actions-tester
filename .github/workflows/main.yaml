@@ -30,11 +30,33 @@ jobs:
       #   run : |
       #     ninja -C build test/test-results.xml
 
-      - name: Test Report
+      - name: Test report (phoenix-actions)
         uses: phoenix-actions/test-reporting@v8
-        id: test-report
         if: success() || failure()
         with:
-          name: JEST Tests
+          name: JEST
+          path: build/*.xml
+          reporter: jest-junit
+
+      - name: Test report (phoenix-actions)
+        uses: phoenix-actions/test-reporting@v8
+        if: success() || failure()
+        with:
+          name: Java JUnit
           path: build/*.xml
           reporter: java-junit
+
+      - name: Test report (EnricoMi)
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: success() || failure()
+        with:
+          check_name: Test report (publish-unit-test-result-action)
+          files: "build/*.xml"
+          comment_mode: off
+
+      - name: Test report (mikepenz)
+        uses: mikepenz/action-junit-report@v3
+        if: success() || failure()
+        with:
+          check_name: action-junit-report
+          report_paths: 'build/*.xml'
