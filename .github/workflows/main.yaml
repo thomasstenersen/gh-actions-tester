@@ -2,6 +2,8 @@ name: Build and test
 on:
   pull_request:
   push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -14,7 +16,7 @@ jobs:
           pipx install ninja
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Build
         run: |
@@ -29,6 +31,14 @@ jobs:
         if: success() || failure()
         run : |
           ninja -C build test/test-results.xml
+
+      - name: Upload artifacts
+        if: success() || failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          retention-days: 5
+          path: build/**/*.xml
 
       - name: Test Report
         uses: phoenix-actions/test-reporting@v8
