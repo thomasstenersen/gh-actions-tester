@@ -1,3 +1,3 @@
-project('gh-actions-tester', 'c', version: '0.0.1')
+project('gh-actions-tester', 'c', version: '0.4.0')
 
 subdir('test')
