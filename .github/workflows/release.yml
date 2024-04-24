@@ -13,4 +13,4 @@ jobs:
       - name: Check release
         run: |
           echo ${{ github.event.release.assets }}
-          echo ${{ github.event.tarball_url }}
+          echo ${{ github.event.release.tarball_url }}
