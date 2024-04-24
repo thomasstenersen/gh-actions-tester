@@ -3,7 +3,7 @@
 
 Test(example_test, failure_test)
 {
-    int actual = 5;
-    int expected = 5;
+    int actual = 9;
+    int expected = 9;
     cr_expect_eq(actual, expected);
 }
