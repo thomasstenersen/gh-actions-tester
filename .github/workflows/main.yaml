@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build & Test
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install meson build
         run: |
